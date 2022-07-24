@@ -26,6 +26,6 @@ app.post("/run", async (req, res) => {
   // write into DB
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(5000, () => {
   console.log(`Listening on port 5000!`);
 });
