@@ -3,11 +3,16 @@ const { executePy } = require("./executePy");
 const { generateFile } = require("./generateFile");
 const cors = require("cors");
 const app = express();
+const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("hewo world");
+});
 
 app.post("/run", async (req, res) => {
   const { language = "cpp", code } = req.body;
@@ -26,6 +31,6 @@ app.post("/run", async (req, res) => {
   // write into DB
 });
 
-app.listen(5000, () => {
-  console.log(`Listening on port 5000!`);
+app.listen(port, () => {
+  console.log(`Listening on http://localhost:${port} `);
 });
